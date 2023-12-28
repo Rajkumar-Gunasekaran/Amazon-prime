@@ -68,3 +68,6 @@ Welcome to the backend repository of the Amazon Prime clone project! This projec
 - Java :https://www.javatpoint.com/how-to-install-mysql
 
 - MySQL :https://www.javatpoint.com/how-to-install-mysql
+
+![amazon prime schema](https://github.com/Rajkumar-Gunasekaran/Amazon-prime/assets/96935976/872dc6b7-9984-4595-b3c4-e56196e78dcf)
+
