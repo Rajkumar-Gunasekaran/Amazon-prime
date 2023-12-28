@@ -20,10 +20,6 @@ Welcome to the backend repository of the Amazon Prime clone project! This projec
 - Implement robust authentication mechanisms to ensure user data security.
 - Use encryption and secure protocols to protect user credentials.
 
-### Password Recovery/Reset
-- Enable password recovery/reset functionalities for user convenience.
-- Implement a secure process to verify user identity before allowing password changes.
-
 ## Browse and Search
 
 ### Content Catalog
@@ -39,10 +35,6 @@ Welcome to the backend repository of the Amazon Prime clone project! This projec
 ### Profile Creation and Management
 - Allow users to create and manage profiles with personalized information.
 - Provide options to update user profiles, including profile pictures and preferences.
-
-### Personalized Recommendations
-- Implement recommendation algorithms based on user preferences and viewing history.
-- Enhance user experience by suggesting content tailored to individual tastes.
 
 ## Content Streaming
 
