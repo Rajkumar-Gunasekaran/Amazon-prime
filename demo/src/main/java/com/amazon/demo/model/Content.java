@@ -22,10 +22,6 @@ public class Content {
     @Column(name = "Category")
     private String category;
 
-    // Other fields...
-
-    // Getters and Setters
-
     public Integer getContentId() {
         return contentId;
     }
@@ -57,8 +53,6 @@ public class Content {
     public void setCategory(String category) {
         this.category = category;
     }
-
-    // Other fields, getters, and setters...
 
     @Override
     public boolean equals(Object o) {

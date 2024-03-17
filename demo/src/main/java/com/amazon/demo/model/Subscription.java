@@ -27,5 +27,4 @@ public class Subscription {
     @Column(name = "EndDate")
     private LocalDateTime endDate;
 
-    // Constructors, getters, and setters
 }

@@ -40,15 +40,15 @@ public class UserService {
         if (userOptional.isPresent()) {
             User user = userOptional.get();
 
-            // Check if the old password matches
+
             if (user.getPassword().equals(oldPassword)) {
-                // Update the password with the new one
+
                 user.setPassword(newPassword);
                 userRepository.save(user);
-                return true; // Password reset successful
+                return true;
             }
         }
 
-        return false; // Password reset failed
+        return false;
     }
 }

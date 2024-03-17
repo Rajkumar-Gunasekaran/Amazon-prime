@@ -79,5 +79,5 @@ public class UserProfile {
         this.firstName = firstName;
     }
 
-    // Constructors and other methods as needed
+
 }
