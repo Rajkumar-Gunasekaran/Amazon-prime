@@ -1,5 +1,0 @@
-INDEX VERSION 1.131
-C:\Users\CLASSIC\Desktop\fun\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1210546869.index
-\login\src\main\java
-C:\Users\CLASSIC\Desktop\fun\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2215462925.index
-\login\src\main\java
