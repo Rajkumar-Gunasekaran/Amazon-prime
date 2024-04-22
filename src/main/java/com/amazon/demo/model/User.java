@@ -3,6 +3,9 @@ package com.amazon.demo.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import jakarta.persistence.*;
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -23,7 +26,18 @@ public class User {
     @Column(name = "Password", nullable = false)
     private String password;
 
+    // Default constructor
+    public User() {
+    }
 
+    // Constructor with parameters
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    // Getters and setters
     public String getPassword() {
         return password;
     }

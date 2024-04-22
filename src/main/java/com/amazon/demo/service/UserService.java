@@ -18,7 +18,7 @@ public class UserService {
     }
 
     public void saveUser(String username, String email, String password) {
-        User newUser = new User();
+        User newUser = new User(username, email, password);
         newUser.setUsername(username);
         newUser.setEmail(email);
         newUser.setPassword(password);

@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.Optional;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 public class UserController {
@@ -17,15 +19,17 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> processRegistration(@RequestBody User user) {
+    public ResponseEntity<String> processRegistration(@RequestParam("username") String username,
+                                                      @RequestParam("email") String email,
+                                                      @RequestParam("password") String password) {
+        User user = new User(username, email, password);
         userService.saveUser(user);
         return ResponseEntity.ok("User registered successfully");
     }
 
     @PostMapping("/login")
-    public ResponseEntity<String> processLogin(@RequestBody Map<String, String> request) {
-        String username = request.get("username");
-        String password = request.get("password");
+    public ResponseEntity<String> processLogin(@RequestParam("username") String username,
+                                               @RequestParam("password") String password) {
 
         Optional<User> user = userService.findByUsername(username);
 
@@ -37,10 +41,9 @@ public class UserController {
     }
 
     @PostMapping("/reset-password")
-    public ResponseEntity<String> resetPassword(@RequestBody Map<String, String> request) {
-        String username = request.get("username");
-        String oldPassword = request.get("oldPassword");
-        String newPassword = request.get("newPassword");
+    public ResponseEntity<String> resetPassword(@RequestParam("username") String username,
+                                                @RequestParam("oldPassword") String oldPassword,
+                                                @RequestParam("newPassword") String newPassword) {
 
         Optional<User> user = userService.findByUsername(username);
 
