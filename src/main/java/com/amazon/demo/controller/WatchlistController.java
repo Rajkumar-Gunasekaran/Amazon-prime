@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,9 @@ public class WatchlistController {
     }
 
     @PostMapping
-    public ResponseEntity<String> addToWatchlist(@RequestBody Watchlist watchlistItem) {
+    public ResponseEntity<String> addToWatchlist(@RequestParam Long userId,
+                                                 @RequestParam Long contentId) {
+        Watchlist watchlistItem = new Watchlist(userId, contentId, LocalDateTime.now());
         watchlistService.addToWatchlist(watchlistItem);
         return ResponseEntity.ok("Added to watchlist successfully");
     }
@@ -40,10 +43,13 @@ public class WatchlistController {
     }
 
     @PutMapping("/item/{watchlistId}")
-    public ResponseEntity<String> updateWatchlistItem(@PathVariable Long watchlistId, @RequestBody Watchlist updatedWatchlistItem) {
+    public ResponseEntity<String> updateWatchlistItem(@PathVariable Long watchlistId,
+                                                      @RequestParam Long userId,
+                                                      @RequestParam Long contentId) {
         Optional<Watchlist> existingWatchlistItem = watchlistService.getWatchlistItemById(watchlistId);
 
         if (existingWatchlistItem.isPresent()) {
+            Watchlist updatedWatchlistItem = new Watchlist(userId, contentId, LocalDateTime.now());
             updatedWatchlistItem.setWatchlistId(watchlistId);
             watchlistService.updateWatchlistItem(updatedWatchlistItem);
             return ResponseEntity.ok("Watchlist item updated successfully");
@@ -58,3 +64,4 @@ public class WatchlistController {
         return ResponseEntity.ok("Watchlist item deleted successfully");
     }
 }
+

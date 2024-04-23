@@ -20,6 +20,18 @@ public class Watchlist {
     @Column(name = "AddedAt")
     private LocalDateTime addedAt;
 
+    // Default constructor
+    public Watchlist() {
+    }
+
+    // Constructor with parameters
+    public Watchlist(Long userId, Long contentId, LocalDateTime addedAt) {
+        this.userId = userId;
+        this.contentId = contentId;
+        this.addedAt = addedAt;
+    }
+
+    // Getters and setters
     public Long getWatchlistId() {
         return watchlistId;
     }
