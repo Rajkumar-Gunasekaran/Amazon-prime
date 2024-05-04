@@ -26,18 +26,15 @@ public class User {
     @Column(name = "Password", nullable = false)
     private String password;
 
-    // Default constructor
     public User() {
     }
 
-    // Constructor with parameters
     public User(String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
     }
 
-    // Getters and setters
     public String getPassword() {
         return password;
     }
