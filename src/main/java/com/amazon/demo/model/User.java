@@ -3,9 +3,6 @@ package com.amazon.demo.model;
 import jakarta.persistence.*;
 import java.util.List;
 
-import jakarta.persistence.*;
-import java.util.List;
-
 @Entity
 @Table(name = "users")
 public class User {
@@ -26,6 +23,9 @@ public class User {
     @Column(name = "Password", nullable = false)
     private String password;
 
+    @Column(name = "type", nullable = false)
+    private int type;
+
     public User() {
     }
 
@@ -33,6 +33,7 @@ public class User {
         this.username = username;
         this.email = email;
         this.password = password;
+        this.type = 1;
     }
 
     public String getPassword() {
@@ -69,5 +70,13 @@ public class User {
 
     public List<Subscription> getSubscriptions() {
         return subscriptions;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 }

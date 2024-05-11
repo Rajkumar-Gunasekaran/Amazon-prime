@@ -22,6 +22,9 @@ public class Content {
     @Column(name = "Category")
     private String category;
 
+    @Column(name = "Location") // New column for location
+    private String location;
+
     public Integer getContentId() {
         return contentId;
     }
@@ -65,5 +68,9 @@ public class Content {
     @Override
     public int hashCode() {
         return Objects.hash(contentId);
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

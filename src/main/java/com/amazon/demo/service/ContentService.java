@@ -25,4 +25,8 @@ public class ContentService {
     public Optional<Content> searchByTitle(String title) {
         return contentRepository.findByTitle(title);
     }
+
+    public void saveContent(Content content) {
+        contentRepository.save(content);
+    }
 }

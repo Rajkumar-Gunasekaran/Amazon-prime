@@ -1,14 +1,10 @@
-// ContentController.java
 package com.amazon.demo.controller;
 
 import com.amazon.demo.model.Content;
 import com.amazon.demo.service.ContentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,8 +26,8 @@ public class ContentController {
         return ResponseEntity.ok(movieTitles);
     }
 
-    @GetMapping("/search/{title}")
-    public ResponseEntity<?> searchByTitle(@PathVariable String title) {
+    @GetMapping("/search")
+    public ResponseEntity<?> searchByTitle(@RequestParam("title") String title) {
         Optional<Content> contentOptional = contentService.searchByTitle(title);
 
         if (contentOptional.isPresent()) {
@@ -40,5 +36,20 @@ public class ContentController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    @PostMapping("/add")
+    public ResponseEntity<String> addContent(@RequestParam("title") String title,
+                                             @RequestParam("description") String description,
+                                             @RequestParam("category") String category,
+                                             @RequestParam("location") String location) {
+        Content content = new Content();
+        content.setTitle(title);
+        content.setDescription(description);
+        content.setCategory(category);
+        content.setLocation(location);
+
+        contentService.saveContent(content);
+
+        return ResponseEntity.ok("Content added successfully");
     }
 }
