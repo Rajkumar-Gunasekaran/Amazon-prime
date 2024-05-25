@@ -50,6 +50,10 @@ Welcome to the backend repository of the Amazon Prime clone project! This projec
 - Keep a history of watched content to personalize recommendations.
 - Provide users with insights into their viewing habits and preferences.
 
+### Admin Features
+- Register and login by admin account.
+- Add additional content.
+
 # <p align="center">Installation</p>
 
 - Java :https://www.javatpoint.com/how-to-install-mysql
