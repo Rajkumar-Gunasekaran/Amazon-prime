@@ -69,7 +69,7 @@ Java : 17 ,
 Spring Boot : 3.2.2,
 Dependencies : Spring Web , Spring Data JPA , MySQL Driver , Thymeleaf
 
-![amazon prime schema](https://github.com/Rajkumar-Gunasekaran/Amazon-prime/assets/96935976/872dc6b7-9984-4595-b3c4-e56196e78dcf)
+![Untitled (1)](https://github.com/Rajkumar-Gunasekaran/Amazon-prime/assets/96935976/1ae2f647-d56b-44ec-85f2-86ee0b91bd0c)
 
 
 Dependencies:
