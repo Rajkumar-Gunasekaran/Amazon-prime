@@ -12,13 +12,19 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"valhalla\",\r\n  \"password\": \"ord123\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "rk",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "asqw",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/login",
@@ -40,13 +46,24 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"valhalla\",\r\n  \"email\": \"Wolf@123\",\r\n  \"password\": \"ord123\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "rk",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "rk@123",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "asqw",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/register",
@@ -101,7 +118,8 @@
 							"    pm.response.to.have.status(200);\r",
 							"});"
 						],
-						"type": "text/javascript"
+						"type": "text/javascript",
+						"packages": {}
 					}
 				}
 			],
@@ -109,13 +127,34 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"userId\": 4,\r\n  \"firstName\": \"John\",\r\n  \"lastName\": \"Doe\",\r\n  \"profilePicture\": \"profile.jpg\",\r\n  \"preferences\": \"Some preferences\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userId",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "hndfsb",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "Doe",
+							"type": "text"
+						},
+						{
+							"key": "profilePicture",
+							"value": "profile.jpg",
+							"type": "text"
+						},
+						{
+							"key": "preferences",
+							"value": "Some preferences",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/user-profiles",
@@ -137,13 +176,34 @@
 				"method": "PUT",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"userId\": 1,\r\n  \"firstName\": \"Updated\",\r\n  \"lastName\": \"LastName\",\r\n  \"profilePicture\": \"updated_profile.jpg\",\r\n  \"preferences\": \"Updated preferences\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userId",
+							"value": "1",
+							"type": "text"
+						},
+						{
+							"key": "firstName",
+							"value": "Updated",
+							"type": "text"
+						},
+						{
+							"key": "lastName",
+							"value": "LastName",
+							"type": "text"
+						},
+						{
+							"key": "profilePicture",
+							"value": "updated_profile.jpg",
+							"type": "text"
+						},
+						{
+							"key": "preferences",
+							"value": "Updated preferences",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/user-profiles/4",
@@ -178,7 +238,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/subscriptions/hal",
+					"raw": "http://localhost:8080/subscriptions/rk",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -186,7 +246,7 @@
 					"port": "8080",
 					"path": [
 						"subscriptions",
-						"hal"
+						"rk"
 					]
 				}
 			},
@@ -198,7 +258,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/content/titles/Drama",
+					"raw": "http://localhost:8080/content/titles/action",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -207,7 +267,7 @@
 					"path": [
 						"content",
 						"titles",
-						"Drama"
+						"action"
 					]
 				}
 			},
@@ -219,7 +279,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/content/search/Movie 1",
+					"raw": "http://localhost:8080/content/search?title=John Wick",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -227,8 +287,13 @@
 					"port": "8080",
 					"path": [
 						"content",
-						"search",
-						"Movie 1"
+						"search"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "John Wick"
+						}
 					]
 				}
 			},
@@ -240,7 +305,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/watchlist/6",
+					"raw": "http://localhost:8080/watchlist/4",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -248,7 +313,7 @@
 					"port": "8080",
 					"path": [
 						"watchlist",
-						"6"
+						"4"
 					]
 				}
 			},
@@ -260,13 +325,19 @@
 				"method": "POST",
 				"header": [],
 				"body": {
-					"mode": "raw",
-					"raw": "{\r\n  \"userId\": 5,\r\n  \"contentId\": 3,\r\n  \"addedAt\": \"2022-02-16T14:45:00\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "userId",
+							"value": "4",
+							"type": "text"
+						},
+						{
+							"key": "contentId",
+							"value": "3",
+							"type": "text"
 						}
-					}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/watchlist",
@@ -298,6 +369,143 @@
 						"watchlist",
 						"item",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin_user",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "admin@example.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"register"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "admin_user",
+							"disabled": true
+						},
+						{
+							"key": "email",
+							"value": "admin@example.com",
+							"disabled": true
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "admin login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "username",
+							"value": "admin_user",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "admin123",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/admin/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"admin",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add content",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "John wick",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "all this for a car and a dog",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "action",
+							"type": "text"
+						},
+						{
+							"key": "location",
+							"value": "c//users//movie//johnwick1",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/content/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"content",
+						"add"
 					]
 				}
 			},
