@@ -136,7 +136,7 @@
 						},
 						{
 							"key": "firstName",
-							"value": "hndfsb",
+							"value": "Harshavardhan",
 							"type": "text"
 						},
 						{
@@ -506,6 +506,27 @@
 					"path": [
 						"content",
 						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "user-profiles",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/user-profiles/user/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user-profiles",
+						"user",
+						"4"
 					]
 				}
 			},
