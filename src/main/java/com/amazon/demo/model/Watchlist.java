@@ -20,6 +20,10 @@ public class Watchlist {
     @Column(name = "AddedAt")
     private LocalDateTime addedAt;
 
+    @Transient
+    private Content content;
+
+
     // Default constructor
     public Watchlist() {
     }
@@ -62,5 +66,12 @@ public class Watchlist {
 
     public void setAddedAt(LocalDateTime addedAt) {
         this.addedAt = addedAt;
+    }
+    public Content getContent() {
+        return content;
+    }
+
+    public void setContent(Content content) {
+        this.content = content;
     }
 }

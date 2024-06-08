@@ -29,4 +29,8 @@ public class ContentService {
     public void saveContent(Content content) {
         contentRepository.save(content);
     }
+
+    public Optional<Content> getContentById(Long contentId) {
+        return contentRepository.findById(Math.toIntExact(contentId));
+    }
 }
