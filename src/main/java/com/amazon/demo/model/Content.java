@@ -22,8 +22,11 @@ public class Content {
     @Column(name = "Category")
     private String category;
 
-    @Column(name = "Location") // New column for location
+    @Column(name = "Location")
     private String location;
+
+    @Column(name = "Actors")
+    private String Actors;
 
     public Integer getContentId() {
         return contentId;
@@ -72,5 +75,13 @@ public class Content {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public String getActors() {
+        return Actors;
     }
 }

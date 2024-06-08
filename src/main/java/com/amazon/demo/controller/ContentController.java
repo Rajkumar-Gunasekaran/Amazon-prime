@@ -32,6 +32,8 @@ public class ContentController {
 
         if (contentOptional.isPresent()) {
             Content content = contentOptional.get();
+            String location = content.getLocation();
+            String actors = content.getActors();
             return ResponseEntity.ok(content);
         } else {
             return ResponseEntity.notFound().build();
