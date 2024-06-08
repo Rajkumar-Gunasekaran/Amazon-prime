@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -52,4 +53,8 @@ public class UserProfileServiceImpl implements UserProfileService {
         return userOptional;
     }
 
+    @Override
+    public List<UserProfile> getUserProfilesByUserId(Long userId) {
+        return userProfileRepository.findByUserId(userId);
+    }
 }

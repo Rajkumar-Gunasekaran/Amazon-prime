@@ -5,6 +5,7 @@ import com.amazon.demo.model.UserProfile;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface UserProfileService {
@@ -13,4 +14,6 @@ public interface UserProfileService {
 
     @Query("SELECT u FROM User u LEFT JOIN FETCH u.subscriptions WHERE u.username = :username")
     Optional<User> findUserWithSubscriptionsByUsername(@Param("username") String username);
+
+    List<UserProfile> getUserProfilesByUserId(Long userId);
 }

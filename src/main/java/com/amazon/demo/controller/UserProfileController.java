@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
 @RequestMapping("/user-profiles")
@@ -42,5 +43,11 @@ public class UserProfileController {
         updatedProfile.setUpdatedAt(LocalDateTime.now());
         userProfileService.updateUserProfile(profileId, updatedProfile);
         return ResponseEntity.ok("User profile updated successfully");
+    }
+
+    @GetMapping("/user/{userId}")
+    public ResponseEntity<List<UserProfile>> getUserProfilesByUserId(@PathVariable Long userId) {
+        List<UserProfile> userProfiles = userProfileService.getUserProfilesByUserId(userId);
+        return ResponseEntity.ok(userProfiles);
     }
 }
