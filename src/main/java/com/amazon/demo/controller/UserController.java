@@ -2,13 +2,14 @@ package com.amazon.demo.controller;
 
 import com.amazon.demo.model.User;
 import com.amazon.demo.service.UserService;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.servlet.http.HttpSession;
 import java.util.Optional;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 public class UserController {
@@ -27,11 +28,12 @@ public class UserController {
 
     @PostMapping("/login")
     public ResponseEntity<String> processLogin(@RequestParam("username") String username,
-                                               @RequestParam("password") String password) {
-
+                                               @RequestParam("password") String password,
+                                               HttpSession session) {
         Optional<User> user = userService.findByUsername(username);
 
         if (user.isPresent() && user.get().getPassword().equals(password) && user.get().getType() == 1) {
+            session.setAttribute("userType", 1);
             return ResponseEntity.ok("Login successful");
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Login failed");
@@ -68,14 +70,24 @@ public class UserController {
 
     @PostMapping("/admin/login")
     public ResponseEntity<String> processAdminLogin(@RequestParam("username") String username,
-                                                    @RequestParam("password") String password) {
-
+                                                    @RequestParam("password") String password,
+                                                    HttpSession session) {
         Optional<User> adminUser = userService.findByUsername(username);
 
         if (adminUser.isPresent() && adminUser.get().getType() == 0 && adminUser.get().getPassword().equals(password)) {
+            session.setAttribute("userType", 0);
             return ResponseEntity.ok("Admin login successful");
         } else {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Admin login failed");
         }
+    }
+
+    @PostMapping("/logout")
+    public ResponseEntity<String> logout(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        return ResponseEntity.ok("Logout successful");
     }
 }

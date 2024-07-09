@@ -3,12 +3,12 @@ package com.amazon.demo.controller;
 import com.amazon.demo.model.Subscription;
 import com.amazon.demo.service.SubscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -23,9 +23,16 @@ public class SubscriptionController {
     }
 
     @GetMapping("/{username}")
-    public ResponseEntity<List<Subscription>> getUserSubscriptions(@PathVariable String username) {
+    public ResponseEntity<List<Subscription>> getUserSubscriptions(@PathVariable String username,
+                                                                   HttpServletRequest request) {
+        HttpSession session = request.getSession();
+        Integer userType = (Integer) session.getAttribute("userType");
+
+        if (userType == null || userType != 1) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
         List<Subscription> subscriptions = subscriptionService.getUserSubscriptions(username);
         return ResponseEntity.ok(subscriptions);
     }
-
 }
