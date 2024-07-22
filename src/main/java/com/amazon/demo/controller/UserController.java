@@ -1,14 +1,15 @@
 package com.amazon.demo.controller;
 
 import com.amazon.demo.model.User;
+import com.amazon.demo.service.Base64Utility;
 import com.amazon.demo.service.UserService;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpSession;
 import java.util.Optional;
 
 @RestController
@@ -21,7 +22,8 @@ public class UserController {
     public ResponseEntity<String> processRegistration(@RequestParam("username") String username,
                                                       @RequestParam("email") String email,
                                                       @RequestParam("password") String password) {
-        User user = new User(username, email, password);
+        String encodedPassword = Base64Utility.encode(password);
+        User user = new User(username, email, encodedPassword);
         userService.saveUser(user);
         return ResponseEntity.ok("User registered successfully");
     }
@@ -32,7 +34,7 @@ public class UserController {
                                                HttpSession session) {
         Optional<User> user = userService.findByUsername(username);
 
-        if (user.isPresent() && user.get().getPassword().equals(password) && user.get().getType() == 1) {
+        if (user.isPresent() && Base64Utility.decode(user.get().getPassword()).equals(password) && user.get().getType() == 1) {
             session.setAttribute("userType", 1);
             return ResponseEntity.ok("Login successful");
         } else {
@@ -44,12 +46,11 @@ public class UserController {
     public ResponseEntity<String> resetPassword(@RequestParam("username") String username,
                                                 @RequestParam("oldPassword") String oldPassword,
                                                 @RequestParam("newPassword") String newPassword) {
-
         Optional<User> user = userService.findByUsername(username);
 
-        if (user.isPresent() && user.get().getPassword().equals(oldPassword)) {
+        if (user.isPresent() && Base64Utility.decode(user.get().getPassword()).equals(oldPassword)) {
             User updatedUser = user.get();
-            updatedUser.setPassword(newPassword);
+            updatedUser.setPassword(Base64Utility.encode(newPassword));
             userService.saveUser(updatedUser);
 
             return ResponseEntity.ok("Password reset successful");
@@ -62,7 +63,8 @@ public class UserController {
     public ResponseEntity<String> processAdminRegistration(@RequestParam("username") String username,
                                                            @RequestParam("email") String email,
                                                            @RequestParam("password") String password) {
-        User adminUser = new User(username, email, password);
+        String encodedPassword = Base64Utility.encode(password);
+        User adminUser = new User(username, email, encodedPassword);
         adminUser.setType(0); // Set user type as admin
         userService.saveUser(adminUser);
         return ResponseEntity.ok("Admin registered successfully");
@@ -74,7 +76,7 @@ public class UserController {
                                                     HttpSession session) {
         Optional<User> adminUser = userService.findByUsername(username);
 
-        if (adminUser.isPresent() && adminUser.get().getType() == 0 && adminUser.get().getPassword().equals(password)) {
+        if (adminUser.isPresent() && adminUser.get().getType() == 0 && Base64Utility.decode(adminUser.get().getPassword()).equals(password)) {
             session.setAttribute("userType", 0);
             return ResponseEntity.ok("Admin login successful");
         } else {
